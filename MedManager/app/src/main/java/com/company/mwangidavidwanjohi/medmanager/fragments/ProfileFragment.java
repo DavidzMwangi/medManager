@@ -52,7 +52,6 @@ public class ProfileFragment extends Fragment {
 
        return inflater.inflate(R.layout.profile_fragment,container,false);
 
-//        return super.onCreateView(inflater, container, savedInstanceState);
 
 
     }
