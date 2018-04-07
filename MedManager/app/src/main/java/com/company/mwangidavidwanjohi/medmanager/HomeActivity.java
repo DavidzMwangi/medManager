@@ -16,6 +16,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.company.mwangidavidwanjohi.medmanager.fragments.ActiveMedicationFragment;
+import com.company.mwangidavidwanjohi.medmanager.fragments.AddMedicineFragment;
+import com.company.mwangidavidwanjohi.medmanager.fragments.CompletedMedicationFragment;
 import com.company.mwangidavidwanjohi.medmanager.fragments.ProfileFragment;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -45,13 +48,30 @@ public class HomeActivity extends AppCompatActivity
         setContentView(R.layout.activity_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //initialize the dbflow
         FlowManager.init(this);
+
+
+        //set the main fragment as the fragment that contains the active medication
+        ActiveMedicationFragment activeMedicationFragment=new ActiveMedicationFragment();
+        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.main_frame,activeMedicationFragment);
+        transaction.commit();
+
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                // new Medicine creation
+                AddMedicineFragment newMedicine=new AddMedicineFragment();
+                FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_frame,newMedicine);
+//                transaction.addToBackStack(null);
+                transaction.commit();
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
             }
         });
 
@@ -103,23 +123,39 @@ public class HomeActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.add_medication) {
+            // new Medicine creation
+            AddMedicineFragment newMedicine=new AddMedicineFragment();
+            FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.main_frame,newMedicine);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        } else if (id == R.id.active_medication) {
 
-        } else if (id == R.id.nav_slideshow) {
+            //active medication which is the default fragment that launches when app is launched
+            ActiveMedicationFragment activeMedicationFragment=new ActiveMedicationFragment();
+            FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.main_frame,activeMedicationFragment);
+            transaction.commit();
+        } else if (id == R.id.completed_medication) {
 
+            //completed medication fragment
+            CompletedMedicationFragment completedMedicationFragment=new CompletedMedicationFragment();
+            FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.main_frame,completedMedicationFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
         } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.profile) {
             //go to the profile fragment
             ProfileFragment profileFragment=new ProfileFragment();
             FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.main_frame,profileFragment);
-            fragmentTransaction.addToBackStack(null);
+//            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.logout) {
             FirebaseAuth.getInstance().signOut();
         }
 
