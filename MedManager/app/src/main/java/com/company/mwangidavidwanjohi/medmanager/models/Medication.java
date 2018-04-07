@@ -10,30 +10,31 @@ import java.util.UUID;
 @Table(database = MedManagerDatabase.class)
 public class Medication extends BaseModel {
 
+//
     @PrimaryKey
-    int id;
+     public int id=0;
 
     @Column
-    String name;
+    public String name;
 
     @Column
-    String description;
+    public String description;
 
     @Column
-    int frequency_in_a_day;
+    public  int frequency_in_a_day;
 
     @Column
-    int amount_per_frequency;
+    public int amount_per_frequency;
 
     @Column
-    String start_date;
+    public  String start_date;
 
     @Column
-    String end_date;
+    public String end_date;
 
     @Column
-    boolean completed=false;
+    public boolean completed=false;
 
     @Column
-    boolean activate_alarm=true;
+    public boolean activate_alarm=true;
 }

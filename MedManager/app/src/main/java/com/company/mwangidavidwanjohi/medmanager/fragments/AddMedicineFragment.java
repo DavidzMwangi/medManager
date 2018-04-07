@@ -3,8 +3,10 @@ package com.company.mwangidavidwanjohi.medmanager.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,7 @@ import android.widget.Toast;
 import com.company.mwangidavidwanjohi.medmanager.R;
 
 import com.company.mwangidavidwanjohi.medmanager.models.Medication;
+import com.company.mwangidavidwanjohi.medmanager.models.UserProfile;
 import com.raizlabs.android.dbflow.config.FlowManager;
 
 import java.text.SimpleDateFormat;
@@ -77,19 +80,22 @@ public class AddMedicineFragment extends Fragment {
 
                 //save the record in the database
                 Medication med=new Medication();
-                med.id = Math.random();
+                med.id = (int)(Math.random()*500+1);
                 med.name=medicineName.getText().toString();
                 med.description=medicineDescription.getText().toString();
-                med.frequency_in_a_day=frequencySpinner.getSelectedItem();
-                med.amount_per_frequency=amountSpinner.getSelectedItem();
+                med.frequency_in_a_day=Integer.parseInt(frequencySpinner.getSelectedItem().toString());
+                med.amount_per_frequency=Integer.parseInt(amountSpinner.getSelectedItem().toString());
                 med.start_date=startDateStr;
                 med.end_date=endDateStr;
                 med.completed=false;
                 med.activate_alarm=true;
                 med.save();
 
-                                Toast.makeText(getActivity(),frequencySpinner.getSelectedItem().toString(),Toast.LENGTH_SHORT).show();
-
+                //direct to the active medication fragment
+                ActiveMedicationFragment activeMedicationFragment=new ActiveMedicationFragment();
+                FragmentTransaction transaction=getFragmentManager().beginTransaction();
+                transaction.replace(R.id.main_frame,activeMedicationFragment);
+                transaction.commit();
 
             }
         });
