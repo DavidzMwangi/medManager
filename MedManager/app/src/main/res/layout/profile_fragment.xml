@@ -46,10 +46,11 @@
                     android:fontFamily="sans-serif-medium"
                     tools:targetApi="jelly_bean"
                     />
+
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    >
+                    android:layout_height="wrap_content">
+
                     <EditText
                         android:id="@+id/user_name"
                         android:layout_width="match_parent"
@@ -61,9 +62,7 @@
                         android:layout_marginStart="@dimen/activity_horizontal_margin"
                         android:layout_marginTop="@dimen/activity_margin_half"
                         android:ellipsize="end"
-                        android:maxLines="2"
-                        android:layout_toLeftOf="@+id/edit_user_name"
-                        />
+                        android:maxLines="2" />
 
                 </RelativeLayout>
 
@@ -120,7 +119,6 @@
                         android:layout_marginTop="@dimen/activity_margin_half"
                         android:ellipsize="end"
                         android:maxLines="2"
-                        android:layout_toLeftOf="@+id/edit_user_email"
                         />
 
                 </RelativeLayout>
