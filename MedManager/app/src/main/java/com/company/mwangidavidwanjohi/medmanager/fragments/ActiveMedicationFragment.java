@@ -39,7 +39,8 @@ ActiveMedicationAdapter myAdapter;
         //get the active medication from the database
         List<Medication> medications= SQLite.select().from(Medication.class).where(Medication_Table.completed.eq(false)).queryList();
         //set the data to the adapter
-            myAdapter=new ActiveMedicationAdapter(medications);
+            myAdapter=new ActiveMedicationAdapter(getContext(),medications);
             recyclerView.setAdapter(myAdapter);
     }
+
 }

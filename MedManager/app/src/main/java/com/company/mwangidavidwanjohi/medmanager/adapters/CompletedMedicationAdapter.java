@@ -46,7 +46,7 @@ public class CompletedMedicationAdapter  extends RecyclerView.Adapter<CompletedM
         TextView med_name;
         public ViewHolder(View itemView) {
             super(itemView);
-            med_name=(TextView)itemView.findViewById(R.id.completed_medicine_name);
+            med_name=(TextView)itemView.findViewById(R.id.product_name);
         }
     }
 }

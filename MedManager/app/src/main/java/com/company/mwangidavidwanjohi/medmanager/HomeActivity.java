@@ -14,20 +14,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.company.mwangidavidwanjohi.medmanager.fragments.ActiveMedicationFragment;
 import com.company.mwangidavidwanjohi.medmanager.fragments.AddMedicineFragment;
 import com.company.mwangidavidwanjohi.medmanager.fragments.CompletedMedicationFragment;
 import com.company.mwangidavidwanjohi.medmanager.fragments.ProfileFragment;
+import com.company.mwangidavidwanjohi.medmanager.models.Medication;
+import com.company.mwangidavidwanjohi.medmanager.models.UserProfile;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
 import com.raizlabs.android.dbflow.config.FlowManager;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+    UserProfile userProfile=null;
     @Override
     protected void onStart() {
         super.onStart();
@@ -40,6 +44,8 @@ public class HomeActivity extends AppCompatActivity
             //launch main activity
           Intent intent=new Intent(this,MainActivity.class);
           startActivity(intent);
+        }else {
+              userProfile=SQLite.select().from(UserProfile.class).querySingle();
         }
     }
     @Override
@@ -158,9 +164,22 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.logout) {
             FirebaseAuth.getInstance().signOut();
         }
+//        else if (id==R.id.nav_user_name){
+//            if (userProfile!=null){
+//                TextView nav_user_name=(TextView)findViewById(R.id.nav_user_name);
+//                nav_user_name.setText(userProfile.name);
+//            }
+//        }else if (id==R.id.nav_user_email){
+//            if (userProfile!=null){
+//                TextView nav_user_email=(TextView)findViewById(R.id.nav_user_email);
+//                nav_user_email.setText(userProfile.email);
+//            }
+//        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }
