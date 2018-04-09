@@ -19,10 +19,12 @@ import com.company.mwangidavidwanjohi.medmanager.R;
 
 import com.company.mwangidavidwanjohi.medmanager.models.Medication;
 import com.company.mwangidavidwanjohi.medmanager.models.UserProfile;
+import com.company.mwangidavidwanjohi.medmanager.utils.AlarmTimeController;
 import com.raizlabs.android.dbflow.config.FlowManager;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -31,7 +33,7 @@ public class AddMedicineFragment extends Fragment {
 
      AppCompatEditText medicineName,medicineDescription;
      Spinner amountSpinner;
-           Spinner  frequencySpinner;
+     Spinner  frequencySpinner;
      DatePicker startDate,endDate;
      AppCompatButton save;
 
@@ -39,6 +41,7 @@ public class AddMedicineFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.add_medicine,container,false);
+
     }
 
     @Override
@@ -51,6 +54,7 @@ public class AddMedicineFragment extends Fragment {
         frequencySpinner=(Spinner)view.findViewById(R.id.frequency_spinner);
         startDate=(DatePicker)view.findViewById(R.id.start_date);
         startDate.setMinDate(System.currentTimeMillis() - 1000);
+
 
         endDate=(DatePicker)view.findViewById(R.id.end_date);
         endDate.setMinDate(System.currentTimeMillis() - 1000);
@@ -91,6 +95,9 @@ public class AddMedicineFragment extends Fragment {
                 med.activate_alarm=true;
                 med.save();
 
+                //save the medication frequency of being taken in alarm_time table
+                AlarmTimeController.alarmCreater(med.id,med.frequency_in_a_day);
+
                 //direct to the active medication fragment
                 ActiveMedicationFragment activeMedicationFragment=new ActiveMedicationFragment();
                 FragmentTransaction transaction=getFragmentManager().beginTransaction();
@@ -110,7 +117,11 @@ public class AddMedicineFragment extends Fragment {
     public void addFrequencySpinner(View view){
         frequencySpinner=(Spinner)view.findViewById(R.id.frequency_spinner);
         List<Integer> freq=new ArrayList<Integer>();
-       for (int i=1;i<=24;i++){
+       for (int i=1;i<=12;i++){
+           //if its 5,7,9,10,11 do not add as there cannot be such a frequency
+           if (i==5 || i==7 || i==9 || i==10 || i==11){
+               continue;
+           }
            freq.add(i);
        }
         ArrayAdapter<Integer> dataAdapter=new ArrayAdapter<Integer>(getContext(),android.R.layout.simple_spinner_item,freq);
