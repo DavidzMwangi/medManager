@@ -20,6 +20,9 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        //set the title for the toolbar
+        getActivity().setTitle("Profile");
         name=(EditText)view.findViewById(R.id.user_name);
         email=(EditText)view.findViewById(R.id.user_email);
         update_button=(Button) view.findViewById(R.id.update_button);

@@ -47,6 +47,8 @@ public class AddMedicineFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //set toolbar title
+        getActivity().setTitle("Add Medicine");
         FlowManager.init(getActivity());
         medicineName=(AppCompatEditText)view.findViewById(R.id.medicine_name);
         medicineDescription=(AppCompatEditText)view.findViewById(R.id.medicine_description);
