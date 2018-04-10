@@ -104,6 +104,17 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View hview=navigationView.getHeaderView(0);
+        TextView user_name=(TextView)hview.findViewById(R.id.nav_user_name);
+        TextView user_email=(TextView)hview.findViewById(R.id.nav_user_email);
+
+        //get current user details
+        UserProfile user=SQLite.select().from(UserProfile.class).querySingle();
+        if (user!=null){
+            user_name.setText(user.name);
+            user_email.setText(user.email);
+        }
+
 
         AlarmTimeController.cancelAllAlarms(getApplicationContext());
         AlarmTimeController.setNextAlarm(getApplicationContext());
@@ -170,9 +181,11 @@ public class HomeActivity extends AppCompatActivity
             transaction.replace(R.id.main_frame,completedMedicationFragment);
             transaction.addToBackStack(null);
             transaction.commit();
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.profile) {
+        }
+//        else if (id == R.id.nav_manage) {
+//
+//        }
+        else if (id == R.id.profile) {
             //go to the profile fragment
             ProfileFragment profileFragment=new ProfileFragment();
             FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
@@ -199,6 +212,5 @@ public class HomeActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 
 }

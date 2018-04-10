@@ -10,16 +10,16 @@
             android:title="Add Medication" />
         <item
             android:id="@+id/active_medication"
-            android:icon="@mipmap/ic_action_launcher_round"
+            android:icon="@drawable/medicine_color"
             android:title="Active Medication" />
         <item
             android:id="@+id/completed_medication"
             android:icon="@mipmap/ic_action_med_launcher_round"
             android:title="Completed Medication" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+        <!--<item-->
+            <!--android:id="@+id/nav_manage"-->
+            <!--android:icon="@drawable/ic_menu_manage"-->
+            <!--android:title="Tools" />-->
 
         <item
             android:id="@+id/profile"
