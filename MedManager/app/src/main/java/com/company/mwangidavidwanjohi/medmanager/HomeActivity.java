@@ -5,9 +5,11 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,12 +22,14 @@ import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.company.mwangidavidwanjohi.medmanager.BroadCastReceiver.MyAlarmReceiver;
 import com.company.mwangidavidwanjohi.medmanager.fragments.ActiveMedicationFragment;
 import com.company.mwangidavidwanjohi.medmanager.fragments.AddMedicineFragment;
 import com.company.mwangidavidwanjohi.medmanager.fragments.CompletedMedicationFragment;
 import com.company.mwangidavidwanjohi.medmanager.fragments.ProfileFragment;
 import com.company.mwangidavidwanjohi.medmanager.models.Medication;
 import com.company.mwangidavidwanjohi.medmanager.models.UserProfile;
+import com.company.mwangidavidwanjohi.medmanager.utils.AlarmTimeController;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,6 +41,9 @@ import java.util.Calendar;
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     UserProfile userProfile=null;
+
+    private AlarmManager alarmMgr;
+    private PendingIntent alarmIntent;
 
     @Override
     protected void onStart() {
@@ -97,6 +104,10 @@ public class HomeActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        AlarmTimeController.cancelAllAlarms(getApplicationContext());
+        AlarmTimeController.setNextAlarm(getApplicationContext());
+
     }
 
     @Override

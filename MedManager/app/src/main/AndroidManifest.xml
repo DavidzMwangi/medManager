@@ -26,10 +26,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".BroadCastReceiver.AlarmReceiver"
-            android:enabled="false">
+        <receiver android:name=".BroadCastReceiver.BootReceiver"
+            android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name=".BroadCastReceiver.MyAlarmReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="com.company.mwangidavidwanjohi.medmanager.BroadCastReceiver.MyAlarmReceiver" />
             </intent-filter>
         </receiver>
     </application>

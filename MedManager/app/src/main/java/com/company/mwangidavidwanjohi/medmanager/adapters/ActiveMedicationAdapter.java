@@ -66,6 +66,8 @@ public class ActiveMedicationAdapter extends RecyclerView.Adapter<ActiveMedicati
                     //change the alarm value in the database to true
                     new_value.activate_alarm=true;
                     new_value.save();
+                    //activate alarm in the database
+                    ActiveMedicationFragment.activateAlarm(new_value.id);
 
                 }else {
                     holder.alarmStatus.setText("Alarm Disabled");
@@ -73,6 +75,8 @@ public class ActiveMedicationAdapter extends RecyclerView.Adapter<ActiveMedicati
                     //change the alarm value in the database to false
                     new_value.activate_alarm=false;
                     new_value.save();
+                    //deactivate alarm in database
+                    ActiveMedicationFragment.deactivate(new_value.id);
                 }
             }
         });

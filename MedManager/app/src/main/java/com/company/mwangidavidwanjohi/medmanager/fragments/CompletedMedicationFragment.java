@@ -30,6 +30,9 @@ public class CompletedMedicationFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        //set toolbar title
+        getActivity().setTitle("Completed Medication");
        //set the recyclerview for the completed medication
         recyclerView=(RecyclerView)view.findViewById(R.id.completed_recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -40,7 +43,7 @@ public class CompletedMedicationFragment extends Fragment {
         List<Medication> completedMedications= SQLite.select().from(Medication.class)
                         .where(Medication_Table.completed.eq(true)).queryList();
         //set the records to the adapter thn set the adapter to the recyclerview
-        completedMedicationAdapter=new CompletedMedicationAdapter(completedMedications);
+        completedMedicationAdapter=new CompletedMedicationAdapter(getContext(),completedMedications);
         recyclerView.setAdapter(completedMedicationAdapter);
 
 

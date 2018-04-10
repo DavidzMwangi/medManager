@@ -104,6 +104,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="Medication Frequency"
+                    android:layout_marginTop="8dp"
+
                     android:id="@+id/business_name"
                     android:layout_marginLeft="@dimen/activity_vertical_margin"
                     android:layout_marginStart="@dimen/activity_vertical_margin"/>
@@ -121,6 +123,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
                     android:text="1x3"
                     android:id="@+id/frequency"
                  />
@@ -133,8 +136,8 @@
                     android:text="Mark as Completed"
                     android:id="@+id/mark_completed"
                     android:layout_marginTop="8dp"
-                    android:layout_marginLeft="@dimen/activity_vertical_margin"
-                    android:layout_marginStart="@dimen/activity_vertical_margin"/>
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginStart="1dp"/>
 
                 <CheckBox
                     android:id="@+id/completed_checkbox"
