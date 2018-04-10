@@ -1,5 +1,8 @@
 package com.company.mwangidavidwanjohi.medmanager;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -29,9 +32,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.raizlabs.android.dbflow.config.FlowManager;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
+import java.util.Calendar;
+
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     UserProfile userProfile=null;
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -57,6 +63,8 @@ public class HomeActivity extends AppCompatActivity
 
         //initialize the dbflow
         FlowManager.init(this);
+
+        //trigger alarm scheduler
 
 
         //set the main fragment as the fragment that contains the active medication
