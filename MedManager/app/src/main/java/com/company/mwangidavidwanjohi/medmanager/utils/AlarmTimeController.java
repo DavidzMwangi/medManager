@@ -213,14 +213,19 @@ public class AlarmTimeController {
         //to implement the if condition to determine next hour based on current hour
         int next_hour;
         if (current_hour%2==0){
-            next_hour=current_hour+2;
+
+                next_hour=current_hour+2;
+
+//            }
         }else {
-            next_hour=current_hour+1;
+//
+                next_hour = current_hour + 1;
         }
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.set(Calendar.HOUR_OF_DAY, next_hour);
 
+            calendar.set(Calendar.HOUR_OF_DAY, next_hour);
+//        }
 
         AlarmManager alarmMgr = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         Intent _intent = new Intent(context, MyAlarmReceiver.class);

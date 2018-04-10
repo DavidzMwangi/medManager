@@ -9,4 +9,6 @@
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
+    <string name="search_hint">Search Medicine Name</string>
+    <string name="title_activity_search_result">SearchResultActivity</string>
 </resources>
