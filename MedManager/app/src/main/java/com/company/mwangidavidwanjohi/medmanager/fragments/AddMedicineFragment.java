@@ -108,6 +108,37 @@ public class AddMedicineFragment extends Fragment {
 
             }
         });
+
+        //handle the searching of medicine here
+        final AppCompatEditText medicine_query=(AppCompatEditText)view.findViewById(R.id.search_word);
+        AppCompatButton search_button=(AppCompatButton)view.findViewById(R.id.search_button);
+
+        search_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (medicine_query.getText().toString().isEmpty() ){
+                    //empty edit text
+                    Toast.makeText(getContext(),"You cannot search an empty medicine",Toast.LENGTH_LONG).show();
+                }else{
+
+                    //get the medicine name entered
+                    String search_value=medicine_query.getText().toString();
+
+                    //open the search fragment and display the data
+                    SearchFragment searchFragment=new SearchFragment();
+                    Bundle bundle=new Bundle();
+                    bundle.putString("searched_key_word",search_value);
+                    searchFragment.setArguments(bundle);
+                    FragmentTransaction transaction=getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.main_frame,searchFragment);
+                    transaction.commit();
+
+
+//
+
+                }
+            }
+        });
     }
 
     public String dateConverter(int day,int month, int year){
