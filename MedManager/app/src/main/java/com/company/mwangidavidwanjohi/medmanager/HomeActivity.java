@@ -35,6 +35,7 @@ import com.company.mwangidavidwanjohi.medmanager.utils.AlarmTimeController;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.raizlabs.android.dbflow.config.FlowManager;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
@@ -200,25 +201,15 @@ public class HomeActivity extends AppCompatActivity
             fragmentTransaction.commit();
 
         } else if (id == R.id.logout) {
+
             FirebaseAuth.getInstance().signOut();
         }
-//        else if (id==R.id.nav_user_name){
-//            if (userProfile!=null){
-//                TextView nav_user_name=(TextView)findViewById(R.id.nav_user_name);
-//                nav_user_name.setText(userProfile.name);
-//            }
-//        }else if (id==R.id.nav_user_email){
-//            if (userProfile!=null){
-//                TextView nav_user_email=(TextView)findViewById(R.id.nav_user_email);
-//                nav_user_email.setText(userProfile.email);
-//            }
-//        }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    //integrating gitlab ci
 
 }
