@@ -3,11 +3,16 @@ package com.company.mwangidavidwanjohi.medmanager.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.company.mwangidavidwanjohi.medmanager.R;
 import com.company.mwangidavidwanjohi.medmanager.adapters.CompletedMedicationAdapter;
@@ -46,6 +51,33 @@ public class CompletedMedicationFragment extends Fragment {
         completedMedicationAdapter=new CompletedMedicationAdapter(getContext(),completedMedications);
         recyclerView.setAdapter(completedMedicationAdapter);
 
+        //handle search for the medicine here
+        final AppCompatEditText medicine_to_search=(AppCompatEditText) view.findViewById(R.id.medicine_to_search);
+        AppCompatButton search=(AppCompatButton)view.findViewById(R.id.search_button);
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (medicine_to_search.getText().toString().isEmpty() ){
+                    //empty edit text
+                    Toast.makeText(getContext(),"You cannot search an empty medicine",Toast.LENGTH_LONG).show();
+                }else{
+
+                    //get entered text
+                    String search_value=medicine_to_search.getText().toString();
+
+                    //open the search fragment and display the data
+                    SearchFragment searchFragment=new SearchFragment();
+                    Bundle bundle=new Bundle();
+                    bundle.putString("searched_key_word",search_value);
+                    searchFragment.setArguments(bundle);
+                    FragmentTransaction transaction=getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.main_frame,searchFragment);
+                    transaction.commit();
+
+                }
+            }
+        });
 
     }
 }

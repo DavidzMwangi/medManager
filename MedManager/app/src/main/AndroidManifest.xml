@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.company.mwangidavidwanjohi.medmanager">
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/med_icon"
@@ -10,6 +12,7 @@
         android:roundIcon="@mipmap/ic_action_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -25,20 +28,26 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
-        <receiver android:name=".BroadCastReceiver.BootReceiver"
+
+        <receiver
+            android:name=".BroadCastReceiver.BootReceiver"
             android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-
-        <receiver android:name=".BroadCastReceiver.MyAlarmReceiver"
+        <receiver
+            android:name=".BroadCastReceiver.MyAlarmReceiver"
             android:enabled="true">
             <intent-filter>
                 <action android:name="com.company.mwangidavidwanjohi.medmanager.BroadCastReceiver.MyAlarmReceiver" />
             </intent-filter>
         </receiver>
+
+
     </application>
 
 </manifest>

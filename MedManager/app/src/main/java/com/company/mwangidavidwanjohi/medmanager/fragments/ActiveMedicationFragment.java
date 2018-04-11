@@ -3,14 +3,20 @@ package com.company.mwangidavidwanjohi.medmanager.fragments;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.company.mwangidavidwanjohi.medmanager.R;
 import com.company.mwangidavidwanjohi.medmanager.adapters.ActiveMedicationAdapter;
+import com.company.mwangidavidwanjohi.medmanager.adapters.SearchAdapter;
 import com.company.mwangidavidwanjohi.medmanager.models.AlarmTime;
 import com.company.mwangidavidwanjohi.medmanager.models.AlarmTime_Table;
 import com.company.mwangidavidwanjohi.medmanager.models.Medication;
@@ -41,10 +47,44 @@ ActiveMedicationAdapter myAdapter;
         recyclerView.setLayoutManager(linearLayoutManager);
 
         //get the active medication from the database
-        List<Medication> medications= SQLite.select().from(Medication.class).where(Medication_Table.completed.eq(false)).queryList();
+        List<Medication> medications= SQLite.select().from(Medication.class)
+                .where(Medication_Table.completed.eq(false))
+                .queryList();
         //set the data to the adapter
             myAdapter=new ActiveMedicationAdapter(getContext(),medications);
             recyclerView.setAdapter(myAdapter);
+
+            //handle the search medicine part
+        final AppCompatEditText medicine_query=(AppCompatEditText)view.findViewById(R.id.medicine_query);
+        AppCompatButton search_medicine_button=(AppCompatButton)view.findViewById(R.id.search_medicine_button);
+
+        search_medicine_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (medicine_query.getText().toString().isEmpty() ){
+                    //empty edit text
+                    Toast.makeText(getContext(),"You cannot search an empty medicine",Toast.LENGTH_LONG).show();
+                }else{
+
+                    //query db for such a product
+                    String search_value=medicine_query.getText().toString();
+                    List<Medication> medics=SQLite.select().from(Medication.class)
+                                    .where(Medication_Table.name.like(search_value)).queryList();
+                    //open the search fragment and display the data
+                    SearchFragment searchFragment=new SearchFragment();
+                    Bundle bundle=new Bundle();
+                    bundle.putString("searched_key_word",search_value);
+                    searchFragment.setArguments(bundle);
+                    FragmentTransaction transaction=getFragmentManager().beginTransaction();
+                    transaction.replace(R.id.main_frame,searchFragment);
+                    transaction.commit();
+
+
+//
+
+                }
+            }
+        });
     }
 
     public static void activateAlarm(int medication_id){

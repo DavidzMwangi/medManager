@@ -15,6 +15,7 @@ import com.company.mwangidavidwanjohi.medmanager.models.Medication;
 import com.company.mwangidavidwanjohi.medmanager.models.Medication_Table;
 import com.company.mwangidavidwanjohi.medmanager.utils.AlarmScheduler;
 import com.company.mwangidavidwanjohi.medmanager.utils.AlarmTimeController;
+import com.raizlabs.android.dbflow.config.FlowManager;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.util.Calendar;
@@ -27,7 +28,7 @@ public class MyAlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.e("Test","Alarm received");
-
+        FlowManager.init(context);
         int current_hour= Calendar.HOUR_OF_DAY + 1;
         List<AlarmTime> current_alarm_times= SQLite.select().from(AlarmTime.class)
                 .where(AlarmTime_Table.alarm_enabled.eq(true))
