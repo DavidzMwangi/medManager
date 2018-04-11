@@ -23,6 +23,10 @@ import com.company.mwangidavidwanjohi.medmanager.models.Medication;
 import com.company.mwangidavidwanjohi.medmanager.models.Medication_Table;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class ActiveMedicationFragment extends Fragment {
@@ -48,8 +52,7 @@ ActiveMedicationAdapter myAdapter;
 
         //get the active medication from the database
         List<Medication> medications= SQLite.select().from(Medication.class)
-                .where(Medication_Table.completed.eq(false))
-                .queryList();
+                .where(Medication_Table.completed.eq(false)).queryList();
         //set the data to the adapter
             myAdapter=new ActiveMedicationAdapter(getContext(),medications);
             recyclerView.setAdapter(myAdapter);
@@ -86,6 +89,7 @@ ActiveMedicationAdapter myAdapter;
             }
         });
     }
+
 
     public static void activateAlarm(int medication_id){
         SQLite.update(AlarmTime.class)

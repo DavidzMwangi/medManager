@@ -14,6 +14,7 @@
             android:layout_width="match_parent"
             android:padding="@dimen/ten"
             android:layout_height="wrap_content"
+
             >
 
 
@@ -48,5 +49,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/completed_recycler_view"
+        android:background="#ffdedc"
     />
 </LinearLayout>
