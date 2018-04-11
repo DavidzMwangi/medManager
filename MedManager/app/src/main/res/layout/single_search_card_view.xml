@@ -115,27 +115,13 @@
                     android:text="1x3"
                     android:id="@+id/searched_frequency"
                     />
-                <!--<RelativeLayout-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="match_parent">-->
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:text="Mark as Incomplete"-->
-                        <!--android:id="@+id/mark_completed"-->
-                        <!--android:layout_marginTop="8dp"-->
-                        <!--android:layout_marginLeft="2dp"-->
-                        <!--android:layout_marginStart="2dp"/>-->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
 
-                    <!--<CheckBox-->
-                        <!--android:id="@+id/incomplete_checkbox"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="match_parent"-->
-                        <!--android:layout_alignParentRight="true"-->
-                        <!--android:checked="false"-->
-
-                        <!--/>-->
-                <!--</RelativeLayout>-->
+                    android:id="@+id/completed"
+                    />
             </LinearLayout>
 
         </RelativeLayout>

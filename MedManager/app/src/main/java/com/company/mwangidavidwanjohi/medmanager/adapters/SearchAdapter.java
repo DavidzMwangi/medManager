@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.company.mwangidavidwanjohi.medmanager.R;
 import com.company.mwangidavidwanjohi.medmanager.models.Medication;
@@ -31,6 +32,15 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder holder, int position) {
         Medication medication=medications.get(position);
         Log.e("data",medication.name);
+        holder.searched_medicine_name.setText(medication.name);
+        holder.short_description.setText(medication.description);
+        String frequency=medication.amount_per_frequency+" X "+medication.frequency_in_a_day;
+        holder.searched_frequency.setText(frequency);
+        if (medication.completed){
+            holder.completed.setText("Medication Completed");
+        }else{
+            holder.completed.setText("Medication Incomplete");
+        }
     }
 
     @Override
@@ -39,9 +49,14 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
     }
 
     public static  class ViewHolder extends  RecyclerView.ViewHolder{
+        TextView searched_medicine_name,short_description,completed,searched_frequency;
 
         public ViewHolder(View itemView) {
             super(itemView);
+            searched_medicine_name=(TextView)itemView.findViewById(R.id.searched_medicine_name);
+            short_description=(TextView)itemView.findViewById(R.id.short_description);
+            completed=(TextView)itemView.findViewById(R.id.completed);
+            searched_frequency=(TextView)itemView.findViewById(R.id.searched_frequency);
         }
     }
 
