@@ -11,4 +11,26 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="search_hint">Search Medicine Name</string>
     <string name="title_activity_search_result">SearchResultActivity</string>
+    <string name="no_results_found">No medicine matches the entered words</string>
+    <string name="medicine_name">Medicine Name</string>
+    <string name="short_description">Short Description</string>
+    <string name="medication_frequency">Medication Frequency</string>
+    <string name="mark_as_incomplete">Mark as Incomplete</string>
+    <string name="alarm_enabled">Alarm Enabled</string>
+    <string name="description">Description</string>
+    <string name="mark_as_completed">Mark as Completed</string>
+    <string name="user_name">User Name</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="search_results">Search Results ...</string>
+    <string name="search">Search</string>
+    <string name="search_for_a_product">Search for a product</string>
+    <string name="medicine_description">Medicine Description</string>
+    <string name="medicine_frequency">Medicine Frequency</string>
+    <string name="medication_duration">Medication Duration</string>
+    <string name="profile">Profile</string>
+    <string name="completed_medication">Completed Medication</string>
+    <string name="active_medication">Active Medication</string>
+    <string name="add_medication">Add Medication</string>
+
+
 </resources>

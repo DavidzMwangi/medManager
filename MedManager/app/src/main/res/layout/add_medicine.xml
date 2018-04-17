@@ -25,25 +25,27 @@
                     android:layout_width="match_parent"
                     android:layout_marginLeft="@dimen/ten"
                     android:layout_height="wrap_content"
-                    android:hint="Search for a product"
+                    android:hint="@string/search_for_a_product"
                     android:padding="@dimen/five"
                     android:id="@+id/search_word"
                     android:maxLines="1"
+                    android:inputType="text"
                     android:layout_toLeftOf="@+id/search_button"
                     android:layout_marginRight="@dimen/ten"
 
                     android:background="@drawable/round_edittext_states"/>
 
-                <android.support.v7.widget.AppCompatButton
+
+                <ImageView
                     android:layout_width="wrap_content"
-                    android:text="Search"
-                    android:drawableLeft="@drawable/ic_action_search_black"
-                    android:drawableStart="@drawable/ic_action_search_black"
+                    android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:id="@+id/search_button"
-                    style="@style/AppTheme.RoundedCornerMaterialButtonSmall"
                     android:layout_alignParentRight="true"
-                    android:layout_height="wrap_content" />
+                    android:background="@color/colorAccent"
+                    android:id="@+id/search_button"
+                    android:src="@drawable/ic_action_search"
+
+                    />
 
             </RelativeLayout>
         </android.support.v7.widget.CardView>
@@ -59,11 +61,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Medicine Name"/>
+            android:text="@string/medicine_name"/>
         <android.support.v7.widget.AppCompatEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/medicine_name"
+            android:inputType="text"
             android:maxLines="1"/>
     </LinearLayout>
     <!--medicine description-->
@@ -77,11 +80,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Medicine Description"/>
+            android:text="@string/medicine_description"/>
         <android.support.v7.widget.AppCompatEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="2"
+            android:inputType="text"
             android:id="@+id/medicine_description"/>
     </LinearLayout>
 
@@ -96,7 +100,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Medicine Frequency"
+            android:text="@string/medicine_frequency"
             android:layout_marginBottom="@dimen/activity_vertical_margin"/>
 <RelativeLayout
     android:layout_width="match_parent"
@@ -139,7 +143,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Medication Duration"
+            android:text="@string/medication_duration"
             android:layout_marginBottom="@dimen/activity_vertical_margin"/>
 
 <RelativeLayout
@@ -187,6 +191,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/save"
+                android:background="@drawable/rounded_button"
                 android:text="Save"/>
         </LinearLayout>
 

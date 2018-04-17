@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.company.mwangidavidwanjohi.medmanager.R;
@@ -53,7 +54,7 @@ public class CompletedMedicationFragment extends Fragment {
 
         //handle search for the medicine here
         final AppCompatEditText medicine_to_search=(AppCompatEditText) view.findViewById(R.id.medicine_to_search);
-        AppCompatButton search=(AppCompatButton)view.findViewById(R.id.search_button);
+        ImageView search=(ImageView)view.findViewById(R.id.search_button);
 
         search.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.company.mwangidavidwanjohi.medmanager.R;
@@ -52,16 +53,18 @@ ActiveMedicationAdapter myAdapter;
 
         //get the active medication from the database
         List<Medication> medications= SQLite.select().from(Medication.class)
-                .where(Medication_Table.completed.eq(false)).queryList();
+                .where(Medication_Table.completed.eq(false))
+                .orderBy(Medication_Table.month,true)
+                .queryList();
         //set the data to the adapter
             myAdapter=new ActiveMedicationAdapter(getContext(),medications);
             recyclerView.setAdapter(myAdapter);
 
             //handle the search medicine part
         final AppCompatEditText medicine_query=(AppCompatEditText)view.findViewById(R.id.medicine_query);
-        AppCompatButton search_medicine_button=(AppCompatButton)view.findViewById(R.id.search_medicine_button);
+        ImageView search_medicine_img=(ImageView) view.findViewById(R.id.search_medicine_button);
 
-        search_medicine_button.setOnClickListener(new View.OnClickListener() {
+        search_medicine_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (medicine_query.getText().toString().isEmpty() ){

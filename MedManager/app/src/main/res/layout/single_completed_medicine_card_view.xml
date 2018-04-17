@@ -35,7 +35,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Medicine Name"
+                        android:text="@string/medicine_name"
                         android:layout_marginLeft="@dimen/activity_horizontal_margin"
                         android:layout_marginStart="@dimen/activity_horizontal_margin"
                         android:layout_alignParentTop="true"
@@ -52,7 +52,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Short Description"
+                        android:text="@string/short_description"
                         android:layout_marginTop="@dimen/activity_vertical_margin"
                         android:layout_marginEnd="@dimen/activity_horizontal_margin"
                         android:layout_marginRight="@dimen/activity_horizontal_margin"
@@ -97,7 +97,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Medication Frequency"
+                    android:text="@string/medication_frequency"
                     android:id="@+id/completed_medication_frequency"
                     android:layout_marginLeft="@dimen/activity_vertical_margin"
                     android:layout_marginStart="@dimen/activity_vertical_margin"/>
@@ -124,7 +124,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="Mark as Incomplete"
+                        android:text="@string/mark_as_incomplete"
                         android:id="@+id/mark_completed"
                         android:layout_marginTop="8dp"
                         android:layout_marginLeft="2dp"

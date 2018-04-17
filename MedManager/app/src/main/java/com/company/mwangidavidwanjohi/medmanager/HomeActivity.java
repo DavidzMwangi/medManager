@@ -76,7 +76,6 @@ public class HomeActivity extends AppCompatActivity
         //initialize the dbflow
         FlowManager.init(this);
 
-        //trigger alarm scheduler
 
 
         //set the main fragment as the fragment that contains the active medication
@@ -96,8 +95,7 @@ public class HomeActivity extends AppCompatActivity
                 transaction.replace(R.id.main_frame,newMedicine);
 //                transaction.addToBackStack(null);
                 transaction.commit();
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
+
             }
         });
 
@@ -118,8 +116,12 @@ public class HomeActivity extends AppCompatActivity
         if (user!=null){
             user_name.setText(user.name);
             user_email.setText(user.email);
+        }else {
+            Intent intent=new Intent(this,MainActivity.class);
+            startActivity(intent);
         }
 
+        //trigger alarm
 
         AlarmTimeController.cancelAllAlarms(getApplicationContext());
         AlarmTimeController.setNextAlarm(getApplicationContext());
@@ -189,9 +191,7 @@ public class HomeActivity extends AppCompatActivity
             transaction.addToBackStack(null);
             transaction.commit();
         }
-//        else if (id == R.id.nav_manage) {
-//
-//        }
+
         else if (id == R.id.profile) {
             //go to the profile fragment
             ProfileFragment profileFragment=new ProfileFragment();
@@ -200,10 +200,11 @@ public class HomeActivity extends AppCompatActivity
 //            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
 
-        } else if (id == R.id.logout) {
-
-            FirebaseAuth.getInstance().signOut();
         }
+//        else if (id == R.id.logout) {
+//
+//            FirebaseAuth.getInstance().signOut();
+//        }
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

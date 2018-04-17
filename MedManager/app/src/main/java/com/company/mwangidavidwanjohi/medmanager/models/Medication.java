@@ -36,5 +36,8 @@ public class Medication extends BaseModel {
     public boolean completed=false;
 
     @Column
+    public int month;
+
+    @Column
     public boolean activate_alarm=true;
 }

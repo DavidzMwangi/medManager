@@ -19,7 +19,7 @@
        <TextView
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
-           android:text="Search Results ..."/>
+           android:text="@string/search_results"/>
    </android.support.v7.widget.CardView>
 
     <!--<include layout="@layout/single_search_product_card_view" />-->
