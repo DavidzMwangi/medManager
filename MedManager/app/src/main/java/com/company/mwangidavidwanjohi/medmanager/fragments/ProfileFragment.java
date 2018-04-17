@@ -42,6 +42,8 @@ public class ProfileFragment extends Fragment {
                     user_details.email=email.getText().toString();
                     user_details.save();
 
+                    Toast.makeText(getContext(),"Update successful",Toast.LENGTH_SHORT).show();
+
                 }
             }
         });

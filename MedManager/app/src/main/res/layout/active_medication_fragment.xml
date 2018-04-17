@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginLeft="@dimen/ten"
                 android:layout_height="wrap_content"
-                android:hint="Search for a product"
+                android:hint="@string/search_for_a_product"
                 android:padding="@dimen/five"
                 android:id="@+id/medicine_query"
                 android:maxLines="1"
@@ -30,16 +30,20 @@
 
                 android:background="@drawable/round_edittext_states"/>
 
-            <android.support.v7.widget.AppCompatButton
+            <ImageView
                 android:layout_width="wrap_content"
-                android:text="Search"
-                android:drawableLeft="@drawable/ic_action_search_black"
-                android:drawableStart="@drawable/ic_action_search_black"
-                android:layout_centerVertical="true"
+                android:layout_height="wrap_content"
+            android:src="@drawable/ic_action_search"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
                 android:id="@+id/search_medicine_button"
-                style="@style/AppTheme.RoundedCornerMaterialButtonSmall"
-                android:layout_alignParentRight="true"
-                android:layout_height="wrap_content" />
+              android:background="@color/colorAccent"
+             />
+            <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content" -->
+                <!--android:src="@drawable/ic_action_search_black"-->
+                <!--android:background="@color/colorAccent"/>-->
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>

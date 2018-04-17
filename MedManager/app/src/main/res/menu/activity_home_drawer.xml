@@ -7,28 +7,25 @@
         <item
             android:id="@+id/add_medication"
             android:icon="@drawable/ic_action_add"
-            android:title="Add Medication" />
+            android:title="@string/add_medication" />
         <item
             android:id="@+id/active_medication"
             android:icon="@drawable/medicine_color"
-            android:title="Active Medication" />
+            android:title="@string/active_medication" />
         <item
             android:id="@+id/completed_medication"
             android:icon="@mipmap/ic_action_med_launcher_round"
-            android:title="Completed Medication" />
-        <!--<item-->
-            <!--android:id="@+id/nav_manage"-->
-            <!--android:icon="@drawable/ic_menu_manage"-->
-            <!--android:title="Tools" />-->
+            android:title="@string/completed_medication" />
+
 
         <item
             android:id="@+id/profile"
             android:icon="@drawable/ic_action_person"
-            android:title="Profile" />
-        <item
-            android:id="@+id/logout"
-            android:icon="@drawable/ic_action_logout"
-            android:title="Logout" />
+            android:title="@string/profile" />
+        <!--<item-->
+            <!--android:id="@+id/logout"-->
+            <!--android:icon="@drawable/ic_action_logout"-->
+            <!--android:title="Logout" />-->
     </group>
 
 </menu>

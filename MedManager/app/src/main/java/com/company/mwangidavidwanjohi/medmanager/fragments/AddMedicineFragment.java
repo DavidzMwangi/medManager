@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -78,6 +79,8 @@ public class AddMedicineFragment extends Fragment {
                 //end date
                 String endDateStr=dateConverter(endDate.getDayOfMonth(),endDate.getMonth(),endDate.getYear());
 
+                Calendar cal=Calendar.getInstance();
+                int month=cal.get(Calendar.MONTH);
                 if (medicineName.getText().toString().matches("") ||medicineDescription.getText().toString().matches("")){
                     Toast.makeText(getActivity(),"Medicine Name or description cannot be empty",Toast.LENGTH_LONG).show();
                     return;
@@ -94,6 +97,7 @@ public class AddMedicineFragment extends Fragment {
                 med.start_date=startDateStr;
                 med.end_date=endDateStr;
                 med.completed=false;
+                med.month=month;
                 med.activate_alarm=true;
                 med.save();
 
@@ -111,7 +115,7 @@ public class AddMedicineFragment extends Fragment {
 
         //handle the searching of medicine here
         final AppCompatEditText medicine_query=(AppCompatEditText)view.findViewById(R.id.search_word);
-        AppCompatButton search_button=(AppCompatButton)view.findViewById(R.id.search_button);
+        ImageView search_button=(ImageView) view.findViewById(R.id.search_button);
 
         search_button.setOnClickListener(new View.OnClickListener() {
             @Override

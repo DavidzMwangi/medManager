@@ -225,7 +225,6 @@ public class AlarmTimeController {
         calendar.setTimeInMillis(System.currentTimeMillis());
 
             calendar.set(Calendar.HOUR_OF_DAY, next_hour);
-//        }
 
         AlarmManager alarmMgr = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         Intent _intent = new Intent(context, MyAlarmReceiver.class);

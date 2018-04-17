@@ -42,7 +42,7 @@
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:layout_marginStart="@dimen/activity_horizontal_margin"
                     android:ellipsize="end"
-                    android:text="User Name"
+                    android:text="@string/user_name"
                     android:fontFamily="sans-serif-medium"
                     tools:targetApi="jelly_bean"
                     />
@@ -134,20 +134,14 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Update Profile"
+            android:text="@string/update_profile"
             android:id="@+id/update_button"
             android:layout_gravity="center"
-            style="@style/Base.Widget.AppCompat.ActionButton"
-            android:background="@color/colorPrimary"/>
+
+            android:background="@drawable/rounded_button"/>
+
     </LinearLayout>
 
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
 
 </android.support.design.widget.CoordinatorLayout>
