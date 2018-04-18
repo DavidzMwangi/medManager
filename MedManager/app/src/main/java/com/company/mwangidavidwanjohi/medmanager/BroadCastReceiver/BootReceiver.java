@@ -9,7 +9,10 @@ import com.company.mwangidavidwanjohi.medmanager.utils.AlarmTimeController;
 public class BootReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
-        AlarmTimeController.cancelAllAlarms(context);
-        AlarmTimeController.setNextAlarm(context);
+
+        if (intent.getAction().equals("android.intent.action.BOOT_COMPLETED")) {
+            AlarmTimeController.cancelAllAlarms(context);
+            AlarmTimeController.setNextAlarm(context);
+        }
     }
 }

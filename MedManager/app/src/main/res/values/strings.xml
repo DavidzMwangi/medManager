@@ -15,10 +15,10 @@
     <string name="medicine_name">Medicine Name</string>
     <string name="short_description">Short Description</string>
     <string name="medication_frequency">Medication Frequency</string>
-    <string name="mark_as_incomplete">Mark as Incomplete</string>
+    <string name="mark_as_incomplete">Incomplete</string>
     <string name="alarm_enabled">Alarm Enabled</string>
     <string name="description">Description</string>
-    <string name="mark_as_completed">Mark as Completed</string>
+    <string name="mark_as_completed">Completed</string>
     <string name="user_name">User Name</string>
     <string name="update_profile">Update Profile</string>
     <string name="search_results">Search Results ...</string>

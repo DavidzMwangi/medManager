@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.os.SystemClock;
 import android.util.Log;
 
+import com.company.mwangidavidwanjohi.medmanager.BroadCastReceiver.BootReceiver;
 import com.company.mwangidavidwanjohi.medmanager.BroadCastReceiver.MyAlarmReceiver;
+import com.company.mwangidavidwanjohi.medmanager.MainActivity;
 import com.company.mwangidavidwanjohi.medmanager.models.AlarmTime;
 
 import java.sql.Time;
@@ -213,6 +215,7 @@ public class AlarmTimeController {
         //to implement the if condition to determine next hour based on current hour
         int next_hour;
         if (current_hour%2==0){
+            Log.e("evener","even");
 
                 next_hour=current_hour+2;
 
@@ -225,26 +228,34 @@ public class AlarmTimeController {
         calendar.setTimeInMillis(System.currentTimeMillis());
 
             calendar.set(Calendar.HOUR_OF_DAY, next_hour);
+//                calendar.set(Calendar.MINUTE,1);
 
         AlarmManager alarmMgr = (AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         Intent _intent = new Intent(context, MyAlarmReceiver.class);
-        PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, _intent, 0);
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, _intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
+        //creating alarm to fire upon the current hour and next even hour
+//
         alarmMgr.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmIntent);
-        Log.e("med_manager_alarm","Alarm set to "+next_hour);
+
+        Log.e("med_manager_alarm","Next alarm scheduled for: "+next_hour);
+
+
+
+
     }
 
     public static void cancelAllAlarms(Context context){
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
         Intent updateServiceIntent = new Intent(context, MyAlarmReceiver.class);
-        PendingIntent pendingUpdateIntent = PendingIntent.getService(context, 0, updateServiceIntent, 0);
+        PendingIntent pendingUpdateIntent = PendingIntent.getService(context, 0, updateServiceIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Log.e("alarm_cancelled","Alarm cancelled");
 
         // Cancel alarms
-        try {
+        if (alarmManager!= null) {
             alarmManager.cancel(pendingUpdateIntent);
-        } catch (Exception e) {
-            Log.e("Alarm", "AlarmManager update was not canceled. " + e.toString());
         }
+
     }
 }

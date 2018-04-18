@@ -1,5 +1,6 @@
 package com.company.mwangidavidwanjohi.medmanager;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -106,16 +107,9 @@ public class MainActivity extends AppCompatActivity {
 
         loadingProgressBar=(ProgressBar)findViewById(R.id.loading_progress_bar);
 
-        //dbflow initialization
+        //dbflow initialization for the database to work
         FlowManager.init(this);
 
-        //check for permission to be granted before the user continues
-        int PERMISSION_ALL = 1;
-        String[] PERMISSIONS = {android.Manifest.permission.RECEIVE_BOOT_COMPLETED, android.Manifest.permission.INTERNET};
-
-        if (!hasPermissions(this, PERMISSIONS)) {
-            ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
-        }
 
         //google sign in
         // Configure Google Sign In
@@ -205,20 +199,5 @@ public class MainActivity extends AppCompatActivity {
                  finish();
              }
 
-             //permission checker when the app is opened
 
-             public static boolean hasPermissions(Context context, String... permissions)
-             {
-                 if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null)
-                 {
-                     for (String permission : permissions)
-                     {
-                         if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED)
-                         {
-                             return false;
-                         }
-                     }
-                 }
-                 return true;
-             }
          }

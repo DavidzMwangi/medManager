@@ -27,9 +27,7 @@ public class SearchFragment extends Fragment {
         SearchAdapter searchAdapter;
         List<Medication> medicationers;
         TextView noResults;
-//        public SearchFragment(List<Medication> a){
-//            medicationers=a;
-//        }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -54,7 +52,9 @@ public class SearchFragment extends Fragment {
           List<Medication> medi= SQLite.select().from(Medication.class)
                   .where(Medication_Table.name.like(query)).queryList();
           // if list is empty display the no results textView
-          noResults.setVisibility(View.VISIBLE);
+         if (medi.size()==0){
+             noResults.setVisibility(View.VISIBLE);
+             }
 
           //set the data to the adapter
           searchAdapter=new SearchAdapter(getContext(),medi);
