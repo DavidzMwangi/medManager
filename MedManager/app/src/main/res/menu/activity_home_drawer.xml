@@ -11,7 +11,8 @@
         <item
             android:id="@+id/active_medication"
             android:icon="@drawable/medicine_color"
-            android:title="@string/active_medication" />
+            android:title="@string/active_medication"
+            />
         <item
             android:id="@+id/completed_medication"
             android:icon="@mipmap/ic_action_med_launcher_round"
