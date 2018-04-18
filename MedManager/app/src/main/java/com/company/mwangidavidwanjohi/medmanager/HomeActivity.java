@@ -1,15 +1,21 @@
 package com.company.mwangidavidwanjohi.medmanager;
 
+import android.Manifest;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -39,16 +45,16 @@ import com.google.firebase.auth.FirebaseUser;
 import com.raizlabs.android.dbflow.config.FlowManager;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
-
-
+import java.util.Calendar;
 
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     UserProfile userProfile=null;
-
     private AlarmManager alarmMgr;
     private PendingIntent alarmIntent;
+    private static final String BROADCAST="com.company.mwangidavidwanjohi.medmanager.BroadCastReceiver.MyAlarmReceiver";
+
 
     @Override
     protected void onStart() {
@@ -73,9 +79,11 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //initialize the dbflow
-        FlowManager.init(this);
 
+
+
+        //initialize the dbflow for the database to work
+        FlowManager.init(this);
 
 
         //set the main fragment as the fragment that contains the active medication
@@ -93,7 +101,6 @@ public class HomeActivity extends AppCompatActivity
                 AddMedicineFragment newMedicine=new AddMedicineFragment();
                 FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.main_frame,newMedicine);
-//                transaction.addToBackStack(null);
                 transaction.commit();
 
             }
@@ -117,9 +124,11 @@ public class HomeActivity extends AppCompatActivity
             user_name.setText(user.name);
             user_email.setText(user.email);
         }else {
-            Intent intent=new Intent(this,MainActivity.class);
-            startActivity(intent);
+            Intent intent2=new Intent(this,MainActivity.class);
+            startActivity(intent2);
         }
+
+
 
         //trigger alarm
 
@@ -134,7 +143,9 @@ public class HomeActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            //close the app when back button is pressed
+//            super.onBackPressed();
+            System.exit(1);
         }
     }
 
@@ -173,7 +184,6 @@ public class HomeActivity extends AppCompatActivity
             AddMedicineFragment newMedicine=new AddMedicineFragment();
             FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.main_frame,newMedicine);
-            transaction.addToBackStack(null);
             transaction.commit();
         } else if (id == R.id.active_medication) {
 
@@ -188,7 +198,6 @@ public class HomeActivity extends AppCompatActivity
             CompletedMedicationFragment completedMedicationFragment=new CompletedMedicationFragment();
             FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.main_frame,completedMedicationFragment);
-            transaction.addToBackStack(null);
             transaction.commit();
         }
 
@@ -201,16 +210,13 @@ public class HomeActivity extends AppCompatActivity
             fragmentTransaction.commit();
 
         }
-//        else if (id == R.id.logout) {
-//
-//            FirebaseAuth.getInstance().signOut();
-//        }
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 
 
 }

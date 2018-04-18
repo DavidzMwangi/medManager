@@ -167,6 +167,7 @@ public class AddMedicineFragment extends Fragment {
 
 
     }
+
     public void addAmountSpinner(View view){
         amountSpinner=(Spinner)view.findViewById(R.id.amount_spinner);
         List<Integer> amount=new ArrayList<Integer>();

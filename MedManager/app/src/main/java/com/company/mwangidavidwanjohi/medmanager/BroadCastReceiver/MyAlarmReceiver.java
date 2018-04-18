@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.SystemClock;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.company.mwangidavidwanjohi.medmanager.HomeActivity;
 import com.company.mwangidavidwanjohi.medmanager.models.AlarmTime;
@@ -27,7 +28,9 @@ public class MyAlarmReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+
         Log.e("Test","Alarm received");
+//        Toast.makeText(context,"Alarm receiver received",Toast.LENGTH_SHORT).show();
         FlowManager.init(context);
         int current_hour= Calendar.HOUR_OF_DAY + 1;
         List<AlarmTime> current_alarm_times= SQLite.select().from(AlarmTime.class)
@@ -44,6 +47,7 @@ public class MyAlarmReceiver extends BroadcastReceiver {
             AlarmScheduler.showNotification(context, HomeActivity.class,
                     "You have Medication not taken", "Take " + sb.toString() + " Now");
         }else{
+//            AlarmScheduler.showNotification(context,HomeActivity.class,"No Medication for now","Hakuna dawa saa hii");
             Log.e("Alarm","No current med times tobe fired");
         }
 

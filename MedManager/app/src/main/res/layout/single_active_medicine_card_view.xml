@@ -141,7 +141,9 @@
                     android:id="@+id/mark_completed"
                     android:layout_marginTop="8dp"
                     android:layout_marginLeft="1dp"
-                    android:layout_marginStart="1dp"/>
+                    android:layout_marginStart="1dp"
+                    android:maxLines="1"
+                    android:layout_toLeftOf="@+id/completed_checkbox"/>
 
                 <CheckBox
                     android:id="@+id/completed_checkbox"
