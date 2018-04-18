@@ -36,19 +36,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/medicine_name"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
                         android:layout_marginLeft="@dimen/activity_horizontal_margin"
                         android:layout_marginStart="@dimen/activity_horizontal_margin"
                         android:layout_alignParentTop="true"
                         android:id="@+id/completed_medicine_name"
                         android:maxLines="1"/>
-                    <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_alignParentTop="true"-->
-                        <!--android:text="Product Price"-->
-                        <!--android:id="@+id/product_price"-->
-                        <!--android:layout_marginRight="@dimen/activity_horizontal_margin"-->
-                        <!--android:layout_alignParentRight="true"/>-->
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -58,6 +53,7 @@
                         android:layout_marginRight="@dimen/activity_horizontal_margin"
                         android:layout_marginStart="@dimen/activity_horizontal_margin"
                         android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                        android:textColor="@color/colorPrimary"
                         android:id="@+id/short_description"
                         android:maxLines="2"
                         android:layout_below="@id/completed_medicine_name"/>
@@ -65,6 +61,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/completed_duration"
+                        android:drawableLeft="@drawable/ic_action_time"
+                        android:textColor="@color/colorGreen"
                         android:layout_alignParentBottom="true"
                         android:layout_marginStart="@dimen/activity_horizontal_margin"
                         android:layout_marginLeft="@dimen/activity_horizontal_margin"
@@ -99,6 +97,8 @@
                     android:layout_height="match_parent"
                     android:text="@string/medication_frequency"
                     android:id="@+id/completed_medication_frequency"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
                     android:layout_marginLeft="@dimen/activity_vertical_margin"
                     android:layout_marginStart="@dimen/activity_vertical_margin"/>
 
@@ -115,7 +115,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="1x3"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimary"
                     android:id="@+id/completed_frequency"
                     />
                 <RelativeLayout

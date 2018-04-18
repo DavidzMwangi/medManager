@@ -37,6 +37,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/medicine_name"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold"
                         android:layout_marginLeft="@dimen/activity_horizontal_margin"
                         android:layout_marginStart="@dimen/activity_horizontal_margin"
                         android:layout_alignParentTop="true"
@@ -69,6 +71,7 @@
                         android:layout_marginStart="@dimen/activity_horizontal_margin"
                         android:layout_marginLeft="@dimen/activity_horizontal_margin"
                         android:id="@+id/active_description"
+                        android:textColor="@color/colorPrimary"
                         android:maxLines="2"
                         android:layout_below="@id/active_medicine_name"/>
                     <TextView
@@ -76,6 +79,9 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/active_start_end_date"
                         android:layout_alignParentBottom="true"
+                        android:layout_marginTop="5dp"
+                        android:textColor="@color/colorGreen"
+                        android:drawableLeft="@drawable/ic_action_time"
                         android:layout_marginStart="@dimen/activity_horizontal_margin"
                         android:layout_marginLeft="@dimen/activity_horizontal_margin"
                         android:layout_marginBottom="@dimen/activity_vertical_margin"
@@ -109,7 +115,8 @@
                     android:layout_height="match_parent"
                     android:text="@string/medication_frequency"
                     android:layout_marginTop="8dp"
-
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
                     android:id="@+id/business_name"
                     android:layout_marginLeft="@dimen/activity_vertical_margin"
                     android:layout_marginStart="@dimen/activity_vertical_margin"/>
@@ -129,6 +136,8 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="8dp"
                     android:text="1x3"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimary"
                     android:id="@+id/frequency"
                  />
                 <RelativeLayout
