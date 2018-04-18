@@ -238,7 +238,7 @@ public class AlarmTimeController {
 //
         alarmMgr.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmIntent);
 
-        Log.e("med_manager_alarm","Next alarm scheduled for: "+next_hour);
+//        Log.e("med_manager_alarm","Next alarm scheduled for: "+next_hour);
 
 
 
@@ -250,7 +250,7 @@ public class AlarmTimeController {
 
         Intent updateServiceIntent = new Intent(context, MyAlarmReceiver.class);
         PendingIntent pendingUpdateIntent = PendingIntent.getService(context, 0, updateServiceIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        Log.e("alarm_cancelled","Alarm cancelled");
+//        Log.e("alarm_cancelled","Alarm cancelled");
 
         // Cancel alarms
         if (alarmManager!= null) {

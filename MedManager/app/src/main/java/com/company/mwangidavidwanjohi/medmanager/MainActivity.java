@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
     }
     public void updateUI(FirebaseUser a){
         if (a!=null){
+            loadingProgressBar.setVisibility(View.GONE);
+
             //signed in
           saveUserDetails();
         //launch new activity
@@ -151,8 +153,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        loadingProgressBar.setVisibility(View.GONE);
+        Toast.makeText(getApplicationContext(),"Authenticating...",Toast.LENGTH_SHORT).show();
         // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             // The Task returned from this call is always completed, no need to attach
